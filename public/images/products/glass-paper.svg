@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="background" x1="120" y1="80" x2="1050" y2="850" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6FAFC"/>
+      <stop offset="1" stop-color="#D4E1E8"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="288" y1="152" x2="894" y2="746" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CDEBF1" stop-opacity=".78"/>
+      <stop offset=".48" stop-color="#F7FCFD" stop-opacity=".94"/>
+      <stop offset="1" stop-color="#9FC5D1" stop-opacity=".88"/>
+    </linearGradient>
+    <linearGradient id="frost" x1="705" y1="232" x2="936" y2="690" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity=".94"/>
+      <stop offset="1" stop-color="#D8E7EB" stop-opacity=".82"/>
+    </linearGradient>
+    <filter id="shadow" x="170" y="95" width="850" height="760" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+  </defs>
+  <path fill="url(#background)" d="M0 0h1200v900H0z"/>
+  <circle cx="160" cy="170" r="220" fill="#FFF" fill-opacity=".72"/>
+  <circle cx="1090" cy="770" r="260" fill="#B5D4DE" fill-opacity=".35"/>
+  <path fill="#667C85" fill-opacity=".2" filter="url(#shadow)" d="M270 151h620v590H270z"/>
+  <rect x="280" y="130" width="620" height="610" rx="8" fill="#607984"/>
+  <rect x="296" y="146" width="588" height="578" rx="3" fill="url(#glass)"/>
+  <path d="M590 146v578" stroke="#718992" stroke-opacity=".72" stroke-width="12"/>
+  <path d="M304 433h572" stroke="#718992" stroke-opacity=".72" stroke-width="12"/>
+  <path d="M313 160h264L405 710H313V160Z" fill="#FFF" fill-opacity=".28"/>
+  <path d="M660 158h213v562H660z" fill="url(#frost)"/>
+  <path d="M676 176h180v526" stroke="#FFF" stroke-opacity=".66" stroke-width="12"/>
+  <path d="M720 250h95M720 283h130M720 316h82M720 365h126M720 398h93M720 431h143M720 480h105M720 513h133M720 546h87M720 595h127M720 628h98" stroke="#BDD0D7" stroke-opacity=".62" stroke-width="8" stroke-linecap="round"/>
+  <path d="M0 763c203-64 400-48 594 16 210 69 393 81 606 8v113H0V763Z" fill="#B8CCD2" fill-opacity=".5"/>
+  <path d="M105 830h990" stroke="#FFF" stroke-opacity=".78" stroke-width="4"/>
+</svg>

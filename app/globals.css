@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Theme-aligned focus ring (matches --fl-lavender-deep) */
+  --focus-ring: #9D7FB5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/*
+  Dark-mode body colors disabled — the site is a fixed pastel palette.
+  If you later add real dark mode, re-enable and scope it via a
+  `.theme-dark` class instead of `prefers-color-scheme`, so the
+  homepage never gets a system-driven flip.
+*/
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  /* Prevent iOS rubber-band revealing a dark strip behind .fl-root */
+  overscroll-behavior-y: none;
+}
+
+.service-project-preview {
+  margin-top: 1rem;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  background:
+    radial-gradient(80% 75% at 100% 0%, rgba(255, 175, 204, 0.3), transparent 70%),
+    radial-gradient(75% 75% at 0% 100%, rgba(162, 210, 255, 0.2), transparent 70%),
+    linear-gradient(135deg, #2E1F42 0%, #50345F 55%, #7C3A6C 100%);
+  box-shadow: 0 18px 38px -20px rgba(46, 31, 66, 0.75);
+}
+
+@media (hover: hover) and (min-width: 640px) {
+  .service-option--projects {
+    isolation: isolate;
+  }
+
+  .service-option-card--projects {
+    min-height: 360px;
+  }
+
+  .service-option--projects .service-project-preview {
+    position: absolute;
+    inset: 0;
+    bottom: auto;
+    height: auto;
+    min-height: 100%;
+    z-index: 2;
+    margin: 0;
+    display: block;
+    border-radius: 1.25rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition:
+      opacity 250ms ease,
+      transform 350ms ease,
+      visibility 250ms ease;
+  }
+
+  .service-option--projects:hover .service-project-preview,
+  .service-option--projects:focus-within .service-project-preview {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   ANIMATION KEYFRAMES
+========================================================= */
+
+@keyframes fadeUp {
+  0%   { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes carouselIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* =========================================================
+   ANIMATION UTILITIES
+========================================================= */
+
+.reveal-card {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.reveal-card:hover {
+  animation: floatSoft 3s ease-in-out infinite;
+}
+
+.animate-carousel-in {
+  animation: carouselIn 500ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* =========================================================
+   HIDE SCROLLBAR
+========================================================= */
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* =========================================================
+   VERTICAL IMAGE MARQUEE
+========================================================= */
+
+.marquee-col {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.marquee-up   { animation-name: marqueeUp;   animation-duration: 40s; }
+.marquee-down { animation-name: marqueeDown; animation-duration: 45s; }
+
+.marquee-col:hover,
+.relative:hover > .marquee-col {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeUp {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+@keyframes marqueeDown {
+  from { transform: translateY(-50%); }
+  to   { transform: translateY(0); }
+}
+
+/* =========================================================
+   FOCUS RING — theme-aligned
+========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   ACCESSIBILITY — reduced motion
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-project-preview {
+    transition: none;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-col { animation: none !important; }
+  .reveal-card, .reveal-card:hover {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
