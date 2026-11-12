@@ -18,7 +18,7 @@ import type { Product } from '@/data/products';
 
    The structure comes from data/menu-tree.ts (same as the navbar dropdown),
    the products from data/products.ts. */
-
+  
 const GRID =
   'grid grid-cols-2 items-start gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4';
 
